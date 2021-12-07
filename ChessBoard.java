@@ -91,14 +91,13 @@ public class ChessBoard extends JPanel {
 			this.setAvailableMoves(sqOccupied);
 			gameOver = false;
 		}
-		if (!this.moveHistory.contains(sqOccupied)) {
-			this.moveHistory.add(sqOccupied);
-		}
+		this.moveHistory.add(sqOccupied);
 		this.repaint();
 		return gameOver;
 	}
 
 	public void prevMove() {
+			this.moveHistory.remove(this.moveNumber-1);
 			this.moveNumber--;
 			Square prev = this.moveHistory.get(this.moveNumber-1);
 			prev.setSquareState(SquareState.OCCUPIED);
